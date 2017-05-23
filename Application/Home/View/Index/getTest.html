@@ -1,0 +1,152 @@
+<include file="Public:header"/>
+<!--<include file="Public:nav"/>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <p ><h1 class="text-center">个人用户风险问卷测评</h1></p>
+            <p>尊敬的投资者：
+               为切实保障您的投资权益，应中基协《私募投资基金募集行为管理办法》要求，投资者了解私募基金信息前应提供真实身份信息并参与风险问卷评测，
+               敬请协助我们完成信息补充和评测认证，一次通过后3年内无须再次评测，谢谢您的支持。
+            </p>
+        </div>
+        <form class="form-horizontal" role="form" action="/Home/Index/getTest" method="post">
+            <p class="text-center">二、风险识别能力和风险承担能力问卷调查</p>
+            <!--您的年龄-->
+            <label >1、您的年龄</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="old" id="inlineCheckbox1" value="5">18-30岁（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="old" id="inlineCheckbox2" value="4"> 31-40岁（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="old" id="inlineCheckbox3" value="3">40-50岁（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="old" id="optionsRadios3" value="2" checked>50-65岁（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="old" id="optionsRadios4"  value="1">65岁以上（1分）
+                </label>
+            </div>
+            <!--您的学历-->
+            <label >2、您的学历</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="edu" id="" value="5">博士及以上（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="edu" id="" value="4"> 硕士（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="edu" id="" value="3">本科（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="edu" id="" value="2" checked>中专或大专（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="edu" id=""  value="1">高中及以下（1分）
+                </label>
+            </div>
+            <!--您的职业为-->
+            <label >3、您的职业为</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="work" value="5">金融行业一般从业人员（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="work" value="4"> 国有企业（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="work"  value="3">一般企事业单位员工（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="work"  value="2" checked>专业技术人员（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="work"   value="1">无固定职业（1分）
+                </label>
+            </div>
+            <!--支配年收入-->
+            <label >4、您的家庭可支配年收入为（折合人民币）</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="income"  value="5">1000万元以上（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="income"  value="4" checked> 500—1000万元（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="income"  value="3">100—500万元（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="income"  value="2" >50—100万元（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="income"  value="1">50万元以下（1分）
+                </label>
+            </div>
+            <!--您的学历-->
+            <label >5、在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_proportion"  value="5">大于75%（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_proportion"  value="4"> 50%至75%（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_proportion"  value="3">25%至50%（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_proportion"  value="2" checked>10%至25%（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_proportion"   value="1">小于10%（1分）
+                </label>
+            </div>
+            <!--您的学历-->
+            <label >6、您目前的个人及家庭财务状况属于以下哪一种</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_state"  value="5">比较富裕且有相当的投资（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_state"  value="4">有较为丰厚的积蓄并有一定的投资（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_state"  value="3">有一定积蓄（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_state"  value="2" checked>收入和支出相抵（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="finance_state"   value="1">有较大数额未到期负债（1 分）
+                </label>
+            </div>
+
+            <!--您的学历-->
+            <label >7、您个人目前已经或者准备投资的基金金额占您或者家庭所拥有总资产的比重是多少：（备注：总资产包括存款、证券投资、房地产及实业等）</label>
+            <div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="invest_amount"  value="5">80%以上（5分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="invest_amount"  value="4">50-80%（4分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="invest_amount"  value="3">20-50%（3分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="invest_amount"  value="2" checked>10-20%（2分）
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="invest_amount"   value="1">0-10%（1分）
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success">提交</button>
+        </form>
+    </div>
+</div>
