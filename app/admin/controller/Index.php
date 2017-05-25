@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use app\common\controller\Base;
+use think\Db;
 use think\Request;
 
 class Index extends Base{
@@ -26,20 +27,22 @@ class Index extends Base{
      * @date:20170516
      * */
     public function login(){
-        return $this->fetch('login');
+        if(request()->isAjax()){
+            $request=Request::instance();
+            $param_list=$request->param();
+            $data=[
+                'user_name'=>isset($param_list['user_name']) ? $param_list['user_name'] : 0 ,
+                'user_pass'=>isset($param_list['user_pwd']) ? md5($param_list['user_pwd']) : 0
+            ];
+            $user_info=Db::table('admin')->where($data)->select();
+            if(!empty($user_info)){
+                return json(array('error'=>1,'msg'=>'登录成功！'));
+            }else{
+                return json(array('error'=>1,'msg'=>'用户名或密码错误'));
+            }
+        }else{
+            return view();
+        }
     }
 
-
-    /*
-     * 执行登录操作
-     * @date:20170518
-     * */
-    public function act_login(){
-        $aaa=Request::instance()->param();
-        $data=[
-            'user_name'=>$aaa['user_name'],
-            'user_pass'=>md5($aaa['user_pwd'])
-        ];
-
-    }
 }
