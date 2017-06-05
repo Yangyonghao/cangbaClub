@@ -12,6 +12,12 @@ use think\Db;
 
 class Base extends Controller{
 
+    public function _initialize()
+    {
+        if(!session('uid')||!session('username')){
+            $this->redirect('/admin/index/login');
+        }
+    }
     protected $user_table='';
     public function getUserInfo($data){
         $user_info=Db::table('user')->where($data)->find();

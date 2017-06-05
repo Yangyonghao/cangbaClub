@@ -8,11 +8,11 @@ class Index extends Base{
 
     public function _initialize()
     {
-        parent::_initialize();
-        if(checkIsLogin()==false){
-//            $this->redirect('/admin/index/login');return;
-//            return $this->fetch('/admin/index/login');
-        }
+//        parent::_initialize();
+//        if(checkIsLogin()==false){
+//            $this->redirect(url('index/login'));
+//            return $this->fetch('index/login');
+//        }
     }
 
     public function index()
@@ -40,9 +40,9 @@ class Index extends Base{
             }else{
                 return json(array('error'=>1,'msg'=>'用户名或密码错误'));
             }
-        }else{
-            return view();
         }
+
+        return view();
     }
 
 }
