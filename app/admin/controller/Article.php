@@ -13,7 +13,10 @@ use app\common\controller\Base;
 
 class Article extends Base
 {
+    public function index(){
+        return $this->fetch('index');
+    }
     public function articleList(){
-        return view();
+        return $this->fetch('articleList');
     }
 }

@@ -46,7 +46,11 @@
                 dataType:"json",
                 type:'post',
                 success:function (res) {
-                    alert(res.msg)
+                    if(res.error==0){
+                        window.location.href="/admin/index/index";
+                    }else{
+                        alertOpen(res.msg);
+                    }
                 }
             })
         })
