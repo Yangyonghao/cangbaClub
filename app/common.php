@@ -14,6 +14,6 @@
         if(empty($_SESSION['u_id']) && !isset($_SESSION['u_id'])){
             return false;
         }
-    }
+     }
 ?>
 
