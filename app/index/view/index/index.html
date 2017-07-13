@@ -1,14 +1,30 @@
 {include file="public/header"}
-        <div data-role="page">
-                <div data-role="header">
-                        <h1>欢迎来到我的主页</h1>
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<div class="page-group">
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+            <a class="icon icon-menu pull-left open-panel"></a>
+            <h1 class="title">首页</h1>
+        </header>
+        {include file="public/nav"}
+        <div class="content">
+            <!-- Slider -->
+            <div class="row">
+
+                <div class="swiper-container" data-space-between='10'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="/static/image/aaa.jpg" alt="" style="width:100%;height: 215px;"></div>
+                        <div class="swiper-slide"><img src="/static/image/bbb.jpg" alt="" style="width:100%;height: 215px;"></div>
+                    </div>
+                    <div class="swiper-pagination" style="background-color: transparent; "></div>
                 </div>
-                <div data-role="main" class="ui-content">
-                        <p>我现在是一个移动端开发者!!</p>
-                </div>
-                <div data-role="footer" style="position:fixed;bottom:0;width:100%">
-                        <h1>底部文本</h1>
-                </div>
+            </div>
         </div>
-</body>
-</html>
+    </div>
+</div>
+{include file="public/nav_left"}
+{include file="public/footer"}
+<!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+<script>$.init()</script>

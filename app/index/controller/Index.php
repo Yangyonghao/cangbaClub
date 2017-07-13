@@ -9,4 +9,16 @@ class Index extends Controller
     {
         return $this->fetch('index');
     }
+
+    public function xys(){
+        return view();
+    }
+    public function login(){
+        return view();
+    }
+
+
+    public function classify(){
+        return view();
+    }
 }
