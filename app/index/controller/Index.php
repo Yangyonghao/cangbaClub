@@ -16,4 +16,9 @@ class Index extends Controller
     public function login(){
         return view();
     }
+
+
+    public function classify(){
+        return view();
+    }
 }
