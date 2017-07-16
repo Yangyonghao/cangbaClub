@@ -8,19 +8,12 @@ class Index extends Base{
     public function _initialize()
     {
         parent::_initialize();
-        if(checkIsLogin()==false){
+//        if(checkIsLogin()==false){
 //            $this->redirect('/admin/index/login');return;
 //            return $this->fetch('/admin/index/login');
-        }
+//        }
     }
 
-    public function index()
-    {
-        $user_info=$this->getUserInfo(array('user_mobile'=>'13482185056'));
-        $this->assign('user_info',$user_info);
-        // 模板输出
-        return $this->fetch('index');
-    }
     /*
      * 登录页面
      * @date:20170516
@@ -41,5 +34,15 @@ class Index extends Base{
             'user_pass'=>md5($aaa['user_pwd'])
         ];
 
+    }
+
+    public function index()
+    {
+        return $this->fetch();
+    }
+
+    public function test()
+    {
+        return view();
     }
 }

@@ -138,8 +138,11 @@ return [
         'taglib_end'   => '}',
         'tpl_cache' => false,
         'tpl_replace_string'=>[
-            'PUBLIC_PATH'=>'/static'
-        ]
+            'PUBLIC_PATH'=>'/static',
+            '_PUBLIC_ADMIN_'=>'/admin'
+        ],
+
+        "layout_on" => false
     ],
 
     // 视图输出字符串内容替换
