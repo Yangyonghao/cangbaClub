@@ -1,73 +1,98 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CangBa - 登录</title>
-    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
-    <link rel="shortcut icon" href="favicon.ico"> <link href="PUBLIC_PATH/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
-    <link href="PUBLIC_PATH/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="PUBLIC_PATH/css/animate.min.css" rel="stylesheet">
-    <link href="PUBLIC_PATH/css/style.min.css" rel="stylesheet"><base target="_blank">
-    <!--[if lt IE 8]>
-    <meta http-equiv="refresh" content="0;ie.html" />
-    <![endif]-->
-    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
-</head>
 
-<body class="gray-bg">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="_PUBLIC_ADMIN_/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="_PUBLIC_ADMIN_/css/login.css" />
+	</head>
 
-    <div class="middle-box text-center loginscreen  animated fadeInDown">
-        <div>
-            <div>
-                <h1 class="logo-name">藏</h1>
-            </div>
-            <h3>CangBa Club</h3>
+	<body class="beg-login-bg">
+		<div class="beg-login-box">
+			<header>
+				<h1>后台登录</h1>
+			</header>
+			<div class="beg-login-main">
+				<form action="doLogin" class="layui-form" method="post">
+					<!--<input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />-->
+					<div class="layui-form-item">
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe612;</i>
+                    </label>
+						<input type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+						<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<!--<div class="beg-pull-left beg-login-remember">-->
+							<!--<label>记住帐号？</label>-->
+							<!--<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">-->
+						<!--</div>-->
+						<div class="beg-pull-right">
+							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="doLogin">
+                            <i class="layui-icon">&#xe650;</i> 登录
+                        </button>
+						</div>
+						<div class="beg-clear"></div>
+					</div>
+				</form>
+			</div>
+			<footer>
+				<p>Bruce @www.cangba.club</p>
+			</footer>
+		</div>
+		<script type="text/javascript" src="_PUBLIC_ADMIN_/plugins/layui/layui.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
+//            var userName=$("input[name='userName']").val();
+//            var pwd=$("input[name='password']").val();
+//            alert(userName);
+            layui.use(['layer', 'form[data-type=ajax]'], function() {
+                var layer = layui.layer,
+                    $ = layui.jquery,
+                    form = layui.form();
 
-            <form class="m-t" role="form" >
-                <div class="form-group">
-                    <input type="text" name="user_name" class="form-control" placeholder="用户名" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="user_pwd" class="form-control" placeholder="密码" required="">
-                </div>
-                <button type="button" class="btn btn-primary block full-width m-b">登 录</button>
+                form.verify({
+                    userName: function(value, item){ //value：表单的值、item：表单的DOM对象
+						if(!value){
+						    return "用户名不能为空！"
+						}
+                        if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                            return '用户名不能有特殊字符';
+                        }
+                        if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                            return '用户名首尾不能出现下划线\'_\'';
+                        }
+                        if(/^\d+\d+\d$/.test(value)){
+                            return '用户名不能全为数字';
+                        }
+                    }
 
-            </form>
-        </div>
-    </div>
-    <script src="PUBLIC_PATH/js/jquery.min.js?v=2.1.4"></script>
-    <script src="PUBLIC_PATH/js/bootstrap.min.js?v=3.3.5"></script>
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
-    <script type="text/javascript">
-        var submit_btn=$('button[type="button"]');
-        submit_btn.on('click',function () {
-            var user_name=$('input[name="user_name"]').val();
-            var user_pwd=$('input[name="user_pwd"]').val();
+                    //我们既支持上述函数式的方式，也支持下述数组的形式
+                    //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+                    ,password: [
+                        /^[\S]{6,12}$/
+                        ,'密码必须6到12位，且不能出现空格'
+                    ]
+                });
 
-            if(user_name==''){
-                alert("用户名不能为空");
-                return false;
-            }
-            if(user_pwd==''){
-                alert('密码不能为空');
-                return false;
-            }
-            alert('ss');
-            $.ajax({
-                url:"{:url('Index/act_login')}",
-                data:{
-                    'user_name':user_name,
-                    'user_pwd':user_pwd
-                },
-                dataType:"json",
-                type:'post',
-                success:function (res) {
-                    alert(res.msg)
-                }
-            })
-        })
-    </script>
-</body>
+                form.on('submit(doLogin)',function(data){
+					if(data.error_id==0){
+					    window.location.href='index/index';
+					}else{
+					    layer.msg(data.msg);
+					}
+                });
+            });
+//
+		</script>
+	</body>
+
 </html>
