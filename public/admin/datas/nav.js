@@ -1,15 +1,15 @@
 var navs = [{
-	"title": "基本元素",
+	"title": "系统设置",
 	"icon": "fa-cubes",
 	"spread": true,
 	"children": [{
-		"title": "按钮",
+		"title": "角色管理",
 		"icon": "&#xe641;",
-		"href": "button.html"
+		"href": "/admin/role/roleList.html"
 	}, {
-		"title": "表单",
+		"title": "权限管理",
 		"icon": "&#xe63c;",
-		"href": "form.html"
+		"href": "/admin/role/permission.html"
 	}, {
 		"title": "表格",
 		"icon": "&#xe63c;",

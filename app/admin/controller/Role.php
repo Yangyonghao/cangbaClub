@@ -1,9 +1,14 @@
 <?php
 namespace app\admin\controller;
 use app\common\controller\Base;
+use think\Request;
+use think\Db;
 
+class Role extends Base{
 
-class Index extends Base{
+    public function roleList(){
+        return $this->fetch('roleList');
+    }
 
     /*
      * 登录页面

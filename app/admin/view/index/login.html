@@ -16,7 +16,7 @@
 				<h1>后台登录</h1>
 			</header>
 			<div class="beg-login-main">
-				<form action="doLogin" class="layui-form" method="post">
+				<form action="" class="layui-form" id="uploadForm">
 					<!--<input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />-->
 					<div class="layui-form-item">
 						<label class="beg-login-icon">
@@ -36,9 +36,9 @@
 							<!--<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">-->
 						<!--</div>-->
 						<div class="beg-pull-right">
-							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="doLogin">
-                            <i class="layui-icon">&#xe650;</i> 登录
-                        </button>
+							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="doLogin" id="doLogin">
+                            	<i class="layui-icon">&#xe650;</i> 登录
+                        	</button>
 						</div>
 						<div class="beg-clear"></div>
 					</div>
@@ -83,13 +83,24 @@
                     ]
                 });
 
-                form.on('submit(doLogin)',function(data){
-					if(data.error_id==0){
-					    window.location.href='index/index';
-					}else{
-					    layer.msg(data.msg);
-					}
-                });
+//                form.on('submit(doLogin)',function(data){
+//					if(JSON.stringify(data.error_id)==0){
+//					    window.location.href='index/index';
+//					}else{
+//					    layer.msg(data.msg);
+//					}
+//                });
+				$('#uploadForm').click(function () {
+					$.post({
+						url : "/admin/Login/doLogin",
+						type : "POST",
+						data : $( '#postForm').serialize(),
+						success : function(data) {
+							$( '#serverResponse').html(data);
+						}
+
+					});
+				})
             });
 //
 		</script>

@@ -12,7 +12,14 @@ use think\Db;
 
 class Base extends Controller{
 
-    protected $user_table='';
+    public function _initialize()
+    {
+        parent::_initialize();
+        if(checkIsLogin()==false){
+            $this->redirect(url('Login/index'));
+            return;
+        }
+    }
     public function getUserInfo($data){
         $user_info=Db::table('user')->where($data)->find();
         return $user_info;

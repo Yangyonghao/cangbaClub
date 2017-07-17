@@ -75,9 +75,16 @@ layui.config({
     });
     //清除缓存
     $('#clearCached').on('click', function () {
-        navbar.cleanCached();
-        layer.alert('清除完成!', { icon: 1, title: '系统提示' }, function () {
-            location.reload();//刷新
+        $.ajax({
+            url : "/admin/index/clear",
+            type : "POST",
+            dataType:'json',
+            success : function(data) {
+                layer.alert(data.msg, { icon: 1, title: '系统提示' }, function () {
+                    location.reload();//刷新
+                });
+            }
+
         });
     });
 

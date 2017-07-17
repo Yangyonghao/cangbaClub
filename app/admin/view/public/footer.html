@@ -49,8 +49,20 @@
                 shadeClose: true
             });
         });
+        $("#clearRuntime").on('click',function () {
 
+            $.ajax({
+                url : "/admin/index/clear",
+                type : "POST",
+                dataType:'json',
+                success : function(data) {
+                    layer.alert(data.msg, { icon: 1, title: '系统提示' }, function () {
+                        location.reload();//刷新
+                    });
+                }
 
+            });
+        })
     });
 </script>
 </div>
