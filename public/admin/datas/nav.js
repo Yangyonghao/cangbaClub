@@ -3,17 +3,17 @@ var navs = [{
 	"icon": "fa-cubes",
 	"spread": true,
 	"children": [{
-		"title": "角色管理",
+		"title": "用户管理",
 		"icon": "&#xe641;",
+		"href": "/admin/user/index.html"
+	}, {
+		"title": "角色管理",
+		"icon": "&#xe63c;",
 		"href": "/admin/role/roleList.html"
 	}, {
 		"title": "权限管理",
 		"icon": "&#xe63c;",
 		"href": "/admin/role/permission.html"
-	}, {
-		"title": "表格",
-		"icon": "&#xe63c;",
-		"href": "table.html"
 	}, {
 		"title": "导航",
 		"icon": "&#xe609;",

@@ -66,11 +66,11 @@
 							data : {'userName':userName,'pwd':pwd},
 							dataType:'json',
 							success : function(data) {
-								var res=eval('('+data+')');
-								if(res.error_id==0){
+//								var res=eval('('+data+')');
+								if(data.error_id==0){
 									window.location.href="/admin/index/index";
 								}else{
-									layer.msg(res.msg)
+									layer.msg(data.msg)
 								}
 							}
 

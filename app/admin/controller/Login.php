@@ -28,18 +28,22 @@ class Login extends Controller
         $request=Request::instance()->param();
          try{
              $data=[
-                 'user_name'=>$request['userName'],
-                 'user_pass'=>md5($request['pwd'])
+                 'username'=>$request['userName'],
+                 'password'=>md5($request['pwd'])
              ];
+             $result=$this->validate($data, 'AdminValidate');
+             if(true !==$result){
+                 return json(['error_id'=>-1,'msg'=>$result]);
+             }
              $user_info=Db::name('admin')->where($data)->find();
              if(isset($user_info)){
                  session('u_id',$user_info['id']);
-                 return json_encode(array('error_id'=>0,'msg'=>'login success'));
+                 return json(['error_id'=>0,'msg'=>'login success']);
              }else{
-                 return json_encode(array('error_id'=>-1,'msg'=>'login failed'));
+                 return json(['error_id'=>-1,'msg'=>'login failed']);
              }
          }catch (Exception $e){
-             return json_encode(array('error_id'=>-1,'msg'=>$e->getMessage()));
+             return json(['error_id'=>-1,'msg'=>$e->getMessage()]);
          }
 
     }
