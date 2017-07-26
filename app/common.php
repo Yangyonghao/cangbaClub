@@ -11,7 +11,7 @@
 
 // 应用公共文件
      function checkIsLogin(){
-        if(empty($_SESSION['u_id']) && !isset($_SESSION['u_id'])){
+        if(empty($_SESSION['admin_u_id']) && !isset($_SESSION['admin_u_id'])){
             return false;
         }else{
             return true;

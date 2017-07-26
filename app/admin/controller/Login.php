@@ -37,7 +37,7 @@ class Login extends Controller
              }
              $user_info=Db::name('admin')->where($data)->find();
              if(isset($user_info)){
-                 session('u_id',$user_info['id']);
+                 session('admin_u_id',$user_info['id']);
                  return json(['error_id'=>0,'msg'=>'login success']);
              }else{
                  return json(['error_id'=>-1,'msg'=>'login failed']);
@@ -46,5 +46,13 @@ class Login extends Controller
              return json(['error_id'=>-1,'msg'=>$e->getMessage()]);
          }
 
+    }
+    /*
+     * 退出
+     * */
+    public function loginOut(){
+        session(null);
+        cache('db_config_data',null);//清除缓存中网站配置信息
+        $this->redirect(url('index'));
     }
 }
